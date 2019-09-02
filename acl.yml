@@ -1,0 +1,40 @@
+acl:
+  - name: acl1
+    rules:
+      - name: myhosts
+        action: permit
+        proto: ip
+        source_address: "{{ allowed_addresses }}"
+        destination_address: "{{ device_loopback }}"
+
+      - name: permit bgp
+        action: permit
+        proto: tcp
+        source_address: any
+        destination_address: any
+        dest_port1: 179
+        dest_port_op: eq
+
+      - name: permit transit to R5
+        action: permit
+        proto: ip
+        source_address: any
+        destination_address: 2.2.2.2/32
+
+      - name: permit transit to R6
+        action: permit
+        proto: ip
+        source_address: any
+        destination_address: 1.1.1.1/32
+
+      - name: permit ospf
+        action: permit
+        proto: ospf
+        source_address: any
+        destination_address: any
+
+      - name: deny_all
+        action: deny
+        proto: ip
+        source_address: any
+        destination_address: any
