@@ -1,0 +1,8 @@
+interfaces:
+  - name: Ethernet1/1
+    acl: acl1
+    direction: ingress
+
+  - name: Ethernet1/2
+    acl: acl1
+    direction: ingress
